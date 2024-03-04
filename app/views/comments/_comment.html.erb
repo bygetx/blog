@@ -1,0 +1,17 @@
+<% unless comment.archived? || !comment.commenter %> 
+  <%puts "commenter : +++#{comment.commenter}+++"%>
+  <div class="border p-4 mb-4 hover:bg-gray-800 transition duration-300 ease-in-out rounded-xl">
+    <p class="text-lg font-semibold mb-2 text-white">
+      <strong>@<%= link_to comment.commenter, root_path %></strong><%# change root path with user profile %>
+    </p>
+
+    <p class="text-gray-300">
+      <strong>Comment:</strong>
+      <span class="block mt-2 text-white">
+        <%= comment.body %>
+      </span>
+    </p>
+
+    <%= link_to "Destroy comment", [comment.article, comment], method: :delete, data: { confirm: "Are you sure?" }, class: "text-red-500 hover:underline mt-4" %>
+  </div>
+<% end %>

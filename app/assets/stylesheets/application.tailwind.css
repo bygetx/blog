@@ -1,0 +1,83 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  main {
+    @apply py-2 gap-8 sm:py-8 items-center justify-center bg-gradient-to-t from-blue-700 to-blue-100 dark:from-slate-800 dark:to-slate-900 relative overflow-hidden min-h-screen;
+  }
+  body {
+    @apply font-sans text-base leading-normal text-gray-900 bg-blue-200 scroll-smooth mx-6 px-6;
+  }
+
+  /* Accessibility */
+  a:focus {
+    @apply outline-none;
+  }
+
+  /* Custom resets (optional) */
+  button {
+    @apply bg-transparent border-black cursor-pointer;
+  }
+  h1 {
+    @apply uppercase font-extrabold text-darkgray hover:shadow-sm;
+  }
+  h2 {
+    @apply capitalize font-semibold text-gray hover:shadow-sm;
+  }
+
+  .navbar {
+    @apply bg-cover bg-center bg-no-repeat;
+  }
+
+  .navbar-nav-item {
+    @apply py-6 text-dark text-lg font-medium tracking-wider outline-none mx-8;
+  } 
+  .navbar-nav-item:hover {
+    @apply text-primary;
+  }
+
+  .articlegroup {
+    @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 px mx-auto;
+  }
+  
+}
+
+@layer components {
+  button#top_of_page_button {
+    @apply sticky bottom-5 right-5 z-50 text-light px-4 py-2 rounded shadow-md hover:shadow-md focus:outline-none focus:ring-2 focus:ring-offset-black focus:ring-opacity-50;
+  }
+
+  #topButton {
+    @apply fixed bottom-0 right-4 opacity-0 w-30 h-30 fill-current p-2 rounded-full cursor-pointer transition-opacity duration-1000 ease-in-out;
+  }
+
+  #topButton.show {
+    @apply opacity-100;
+  }
+
+  .article-image {
+    @apply shadow-md rounded-lg overflow-hidden bg-white dark:bg-gray-800 hover:shadow-lg cursor-pointer w-full h-full;
+  }
+  
+  .image-container {
+    @apply h-64 overflow-hidden;
+  }
+
+  .title-container {
+    @apply p-4;
+  }
+
+  .title-container h2 {
+    @apply text-lg font-medium text-grey dark:text-darkgrey hover:text-primary truncate;
+  }
+
+  .new_article_button {
+    @apply inline-flex items-center sm:m-4 px-3 py-2 text-base font-medium text-white bg-indigo-600 border border-transparent rounded-md hover:bg-indigo-700 hover:text-indigo-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500;
+  }
+
+  .hover-effect {
+    @apply relative before:absolute before:top-0 before:left-0 before:w-full before:h-full  before:bg-opacity-70 before:flex before:justify-center before:items-center before:opacity-0 before:transition-opacity before:duration-300 before:ease-in-out hover:before:opacity-100 hover:before:content-['ShowMore'] hover:before:text-white hover:before:text-lg hover:before:font-bold hover:before:tracking-wide;
+  }
+  
+}

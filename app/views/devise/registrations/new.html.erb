@@ -1,0 +1,50 @@
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { class: 'mt-4 flex flex-wrap' }) do |f| %>
+  <%= render "devise/shared/error_messages", resource: resource %>
+  <h2 class="text-2xl font-semibold mb-4 w-full">Sign up</h2>
+  <div class = "field">
+    <%if resource.avatar.attached?%>
+    <%= image_tag(resource.avatar_thumbnail)%>
+    <%else%>
+    <%=image_tag("/default_profile.jpg")%>
+    <%end%>
+  </div>
+  <div class="mb-4 w-full pl-2">
+    <%= f.label :avatar, class: 'block m-2 text-purple-500' %><br />
+    <%= f.file_field :avatar, class: 'w-full p-2 text-purple-700 border-b-2 border-purple-500 outline-none focus:bg-gray-300' %>
+  </div>
+  <div class="mb-4 w-full pl-2">
+    <%= f.label :email, class: 'block m-2 text-purple-500' %><br />
+    <%= f.email_field :email, class: 'w-full p-2 text-purple-700 border-b-2 border-purple-500 outline-none focus:bg-gray-300' %>
+  </div>
+  <div class="mb-4 w-full pl-2">
+    <%= f.label :username, class: 'block m-2 text-purple-500' %><br />
+    <%= f.text_field :username, class: 'w-full p-2 text-purple-700 border-b-2 border-purple-500 outline-none focus:bg-gray-300' %>
+  </div>
+  <div class="flex">
+    <div class="mb-4 w-1/2 pl-2 mr-1">
+      <%= f.label :first_name, class: 'block m-2 text-purple-500' %><br />
+      <%= f.text_field :first_name, class: 'w-full p-2 text-purple-700 border-b-2 border-purple-500 outline-none focus:bg-gray-300' %>
+    </div>
+    <div class="mb-4 w-1/2 pl-2 ml-1">
+      <%= f.label :last_name, class: 'block m-2 text-purple-500' %><br />
+      <%= f.text_field :last_name, class: 'w-full p-2 text-purple-700 border-b-2 border-purple-500 outline-none focus:bg-gray-300' %>
+    </div>
+  </div>
+
+  <div class="mb-4 w-full">
+    <%= f.label :password, class: 'block m-2 text-purple-500' %>
+    <% if @minimum_password_length %>
+      <em class="text-xs text-gray-500">(<%= @minimum_password_length %> characters minimum)</em>
+    <% end %>
+    <%= f.password_field :password, class: 'w-full p-2 text-purple-700 border-b-2 border-purple-500 outline-none focus:bg-gray-300' %>
+  </div>
+
+  <div class="mb-4 w-full">
+    <%= f.label :password_confirmation, class: 'block m-2 text-purple-500' %>
+    <%= f.password_field :password_confirmation, class: 'w-full p-2 text-purple-700 border-b-2 border-purple-500 outline-none focus:bg-gray-300' %>
+  </div>
+
+  <div class="mt-6 w-full">
+    <%= f.submit "Sign up", class: "w-full bg-purple-700 hover:bg-purple-600 text-white font-bold py-2 px-4 rounded" %>
+  </div>
+<% end %>

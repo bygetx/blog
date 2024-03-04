@@ -1,0 +1,36 @@
+<div class="container mx-auto my-8 mt-24 flex flex-wrap">
+  <div class="w-full lg:w-3/5">
+    <div class="article-body-and-title">
+      <h1 id="title" class="text-4xl font-bold mb-4"><%= @article.title %></h1>
+      <p class="mb-4"><%= @article.body %></p>
+
+      <ul class="flex space-x-4 mb-4">
+        <li><%= link_to "Edit", edit_article_path(@article), class: "text-blue-500 hover:underline" %></li>
+        <li><%= link_to "Destroy", article_path(@article), method: :delete, data: { confirm: "Are you sure?" }, class: "text-red-500 hover:underline" %></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="w-full lg:w-2/5 lg:pl-8">
+    <% if @article.image.attached? %>
+      <%= image_tag @article.image, class: "w-full h-full mb-4 rounded-lg" %>
+    <%else%>
+      <%= image_tag "no-image" , class: "w-full h-full mb-4 rounded-lg"%>
+    <% end %>
+  </div>
+
+  <div class="w-full mt-8 lg:flex lg:flex-col lg:items-start">
+    <div class="comment-section w-full">
+      <div class="add-comment">
+        <h2 class="text-2xl font-bold mb-4">Add a comment:</h2>
+        <%= render 'comments/form' %>
+      </div>
+
+      <div class="see-comments mt-8">
+        <h2 class="text-2xl font-bold mb-2">Number of Comments: <%= @article.comments.count %></h2>
+        <h2 class="text-2xl font-bold mb-4">Comments</h2>
+        <%= render @article.comments.reject { |comment| comment.created_at.nil? }.sort_by(&:created_at).reverse %>
+      </div>
+    </div>
+  </div>
+</div>

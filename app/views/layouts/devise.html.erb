@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Blog</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+  </head>
+<body>
+    <main>
+        <div class="flex h-screen bg-gradient-to-br from-gray-800 via-gray-900 to-black bg-opacity-50">
+            <div class="w-full max-w-lg m-auto bg-indigo-100 rounded p-5 text-center items-center">
+                <header>
+                   <div class="flex items-center justify-center">
+    <a href="/" class="mx-auto">
+        <%= image_tag('pepefrg-4.gif', size: "80x80") %>
+        <span class="ml-2 text-2xl font-bold">PePe</span>
+    </a>
+</div>
+                </header>
+
+                <%= yield %>
+
+                <% if notice %>
+                    <%= render 'layouts/notice' %>
+                <% end %>
+                <% if alert %>
+                    <%= render 'layouts/alert' %>
+                <% end %>
+
+                <footer class="my-5">
+                    <%= render "devise/shared/links" %>
+                </footer>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

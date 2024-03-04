@@ -1,0 +1,30 @@
+<%= form_with model: article, class: "bg-black text-white p-8 rounded-lg shadow-lg" do |form| %>
+  <div class="mb-4">
+    <%= form.label :title, class: "block text-sm font-semibold mb-2" %><br>
+    <%= form.text_field :title, class: "w-full p-2 border border-gray-600 rounded text-black" %>
+    <% @article.errors.full_messages_for(:title).each do |message| %>
+      <div class="text-red-500 mt-2"><%= message %></div>
+    <% end %>
+  </div>
+
+  <div class="mb-4">
+    <%= form.label :body, class: "block text-sm font-semibold mb-2" %><br>
+    <%= form.text_area :body, class: "w-full p-2 border border-gray-600 rounded text-black" %>
+    <% @article.errors.full_messages_for(:body).each do |message| %>
+      <div class="text-red-500 mt-2"><%= message %></div>
+    <% end %>
+  </div>
+
+  <div class="mb-4">
+    <%= form.label :status, class: "block text-sm font-semibold mb-2" %><br>
+    <%= form.select :status, Visible::VALID_STATUSES, { selected: article.status || 'public' }, class: "w-full p-2 border border-gray-600 rounded text-black" %>
+  </div>
+
+  <div class="mb-4">
+    <%= form.file_field :image, class: "w-full p-2" %>
+  </div>
+
+  <div>
+    <%= form.submit class: "bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-700 cursor-pointer" %>
+  </div>
+<% end %>
